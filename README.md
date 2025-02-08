@@ -8,7 +8,7 @@ My goal is to deepen my understanding of Charmbracelet tools by modifying and ex
 
 Here are the features and improvements I’ve added:
 
-- **feat(board): add status message for task movement** (`5e8f27b`)
-- **feat(board): add status message for task deletion** (`606017a`)
-- **feat(board): add status message for task creation** (`42adfad`)
-- **fix(board): allow setting default selected column** (`a5a52b0`)
+- [feat(board): add status message for task movement](https://github.com/mustafa-ozturk/iMkancli/commit/5e8f27b)
+- [feat(board): add status message for task deletion](https://github.com/mustafa-ozturk/iMkancli/commit/606017a)
+- [feat(board): add status message for task creation](https://github.com/mustafa-ozturk/iMkancli/commit/42adfad)
+- [fix(board): allow setting default selected column](https://github.com/mustafa-ozturk/iMkancli/commit/a5a52b0)

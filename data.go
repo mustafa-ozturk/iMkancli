@@ -27,4 +27,12 @@ func (b *Board) initLists() {
 	b.cols[done].list.SetItems([]list.Item{
 		Task{status: done, title: "stay cool", description: "as a cucumber"},
 	})
+
+	// focus the correct column
+	for i := range b.cols {
+		if b.cols[i].status == b.focused {
+			b.cols[i].focus = true
+			break
+		}
+	}
 }

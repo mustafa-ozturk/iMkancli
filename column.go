@@ -10,6 +10,7 @@ import (
 const APPEND = -1
 
 type column struct {
+	// used to highlight the currently selected column
 	focus  bool
 	status status
 	list   list.Model
@@ -30,13 +31,9 @@ func (c *column) Focused() bool {
 }
 
 func newColumn(status status) column {
-	var focus bool
-	if status == todo {
-		focus = true
-	}
 	defaultList := list.New([]list.Item{}, list.NewDefaultDelegate(), 0, 0)
 	defaultList.SetShowHelp(false)
-	return column{focus: focus, status: status, list: defaultList}
+	return column{focus: false, status: status, list: defaultList}
 }
 
 // Init does initial setup for the column.
@@ -77,6 +74,7 @@ func (c column) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (c column) View() string {
+	// first gets the style for the column then renders it
 	return c.getStyle().Render(c.list.View())
 }
 
@@ -91,9 +89,11 @@ func (c *column) DeleteCurrent() tea.Cmd {
 }
 
 func (c *column) Set(i int, t Task) tea.Cmd {
+	// if index is within bounds, overwrite an existing task
 	if i != APPEND {
 		return c.list.SetItem(i, t)
 	}
+	// otherwise append a new task
 	return c.list.InsertItem(APPEND, t)
 }
 

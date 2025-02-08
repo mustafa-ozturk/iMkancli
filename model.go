@@ -10,7 +10,7 @@ import (
 type Board struct {
 	help     help.Model
 	loaded   bool
-	focused  status
+	focused  status // tracks selected column
 	cols     []column
 	quitting bool
 }
@@ -18,7 +18,7 @@ type Board struct {
 func NewBoard() *Board {
 	help := help.New()
 	help.ShowAll = true
-	return &Board{help: help, focused: todo}
+	return &Board{help: help, focused: done}
 }
 
 func (m *Board) Init() tea.Cmd {
@@ -67,7 +67,8 @@ func (m *Board) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, cmd
 }
 
-// Changing to pointer receiver to get back to this model after adding a new task via the form... Otherwise I would need to pass this model along to the form and it becomes highly coupled to the other models.
+// Changing to pointer receiver to get back to this model after adding a new task via the form...
+// Otherwise I would need to pass this model along to the form and it becomes highly coupled to the other models.
 func (m *Board) View() string {
 	if m.quitting {
 		return ""
@@ -75,6 +76,9 @@ func (m *Board) View() string {
 	if !m.loaded {
 		return "loading..."
 	}
+
+	// calling View() on all the columns
+	// this is how each column is rendered inside the board
 	board := lipgloss.JoinHorizontal(
 		lipgloss.Left,
 		m.cols[todo].View(),

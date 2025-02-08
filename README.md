@@ -1,27 +1,14 @@
-# Kancli
+# iMprovedkancli
 
-Welcome to our demo repo for a kanban board for the command line.
+This is my improved version of the [Charmbracelet's Kanban CLI demo repository](https://github.com/charmbracelet/kancli).
 
-There is a video to go along with this repo on our [YouTube
-channel](https://youtube.com/c/charmcli) if you would like a full walk through
-tutorial on the topic.
+My goal is to deepen my understanding of Charmbracelet tools by modifying and extending this project.
 
-## Feedback
+### What's New
 
-We'd love to hear your thoughts on this tutorial. Feel free to drop us a note!
+Here are the features and improvements I’ve added:
 
-* [Twitter](https://twitter.com/charmcli)
-* [The Fediverse](https://mastodon.social/@charmcli)
-* [Discord](https://charm.sh/chat)
-
-## License
-
-[MIT](https://github.com/charmbracelet/bubbletea/raw/master/LICENSE)
-
-***
-
-Part of [Charm](https://charm.sh).
-
-<a href="https://charm.sh/"><img alt="The Charm logo" src="https://stuff.charm.sh/charm-badge.jpg" width="400"></a>
-
-Charm热爱开源 • Charm loves open source
+- **feat(board): add status message for task movement** (`5e8f27b`)
+- **feat(board): add status message for task deletion** (`606017a`)
+- **feat(board): add status message for task creation** (`42adfad`)
+- **fix(board): allow setting default selected column** (`a5a52b0`)

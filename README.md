@@ -8,6 +8,7 @@ My goal is to deepen my understanding of Charmbracelet tools by modifying and ex
 
 Here are the features and improvements I’ve added:
 
+- [refactor(column): remove unnecessary tea.Sequence in MoveToNext()](https://github.com/mustafa-ozturk/iMkancli/commit/14408d1)
 - [fix(board): ensure only the focused column has a selected task on startup](https://github.com/mustafa-ozturk/iMkancli/commit/4ea71e9)
 - [refactor(board): add moveFocus() to simplify column navigation](https://github.com/mustafa-ozturk/iMkancli/commit/74501fa)
 - [feat(board): add status message for task movement](https://github.com/mustafa-ozturk/iMkancli/commit/5e8f27b)

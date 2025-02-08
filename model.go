@@ -75,13 +75,9 @@ func (m *Board) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.quitting = true
 			return m, tea.Quit
 		case key.Matches(msg, keys.Left):
-			m.cols[m.focused].Blur()
-			m.focused = m.focused.getPrev()
-			m.cols[m.focused].Focus()
+			m.moveFocus(-1)
 		case key.Matches(msg, keys.Right):
-			m.cols[m.focused].Blur()
-			m.focused = m.focused.getNext()
-			m.cols[m.focused].Focus()
+			m.moveFocus(1)
 		}
 	}
 	res, cmd := m.cols[m.focused].Update(msg)
@@ -116,4 +112,16 @@ func (m *Board) View() string {
 		m.cols[done].View(),
 	)
 	return lipgloss.JoinVertical(lipgloss.Left, board, m.help.View(keys), statusUI)
+}
+
+func (m *Board) moveFocus(direction int) {
+	m.cols[m.focused].Blur()
+
+	if direction < 0 { // left
+		m.focused = m.focused.getPrev()
+	} else { // right
+		m.focused = m.focused.getNext()
+	}
+
+	m.cols[m.focused].Focus()
 }

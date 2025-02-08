@@ -143,9 +143,5 @@ func (c *column) MoveToNext() (tea.Msg, tea.Cmd) {
 	c.list.RemoveItem(c.list.Index())
 	task.status = c.status.getNext()
 
-	// refresh list
-	var cmd tea.Cmd
-	c.list, cmd = c.list.Update(nil)
-
-	return taskMovedMessage{}, tea.Sequence(cmd, func() tea.Msg { return moveMsg{task} })
+	return taskMovedMessage{}, func() tea.Msg { return moveMsg{task} }
 }

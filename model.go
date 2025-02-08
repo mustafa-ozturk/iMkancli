@@ -58,6 +58,11 @@ func (m *Board) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.statusMsg = ""
 	case moveMsg:
 		return m, m.cols[m.focused.getNext()].Set(APPEND, msg.Task)
+	case deleteTaskMessage:
+		m.statusMsg = "Task deleted successfully!"
+		return m, tea.Tick(2*time.Second, func(_ time.Time) tea.Msg {
+			return clearMessage{}
+		})
 	case tea.KeyMsg:
 		switch {
 		case key.Matches(msg, keys.Quit):

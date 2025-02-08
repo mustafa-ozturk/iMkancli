@@ -64,7 +64,11 @@ func (c column) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			f.col = c
 			return f.Update(nil)
 		case key.Matches(msg, keys.Delete):
-			return c, c.DeleteCurrent()
+			msg, cmd := c.DeleteCurrent()
+			return c, tea.Batch(
+				cmd,                           // ensure list updates
+				func() tea.Msg { return msg }, // Convert msg into a cmd
+			)
 		case key.Matches(msg, keys.Enter):
 			return c, c.MoveToNext()
 		}
@@ -78,14 +82,17 @@ func (c column) View() string {
 	return c.getStyle().Render(c.list.View())
 }
 
-func (c *column) DeleteCurrent() tea.Cmd {
+type deleteTaskMessage struct{}
+
+func (c *column) DeleteCurrent() (tea.Msg, tea.Cmd) {
 	if len(c.list.VisibleItems()) > 0 {
 		c.list.RemoveItem(c.list.Index())
+		var cmd tea.Cmd
+		c.list, cmd = c.list.Update(nil)
+		return deleteTaskMessage{}, cmd // Notify Board.Update()
 	}
 
-	var cmd tea.Cmd
-	c.list, cmd = c.list.Update(nil)
-	return cmd
+	return nil, nil // no deletion happened
 }
 
 func (c *column) Set(i int, t Task) tea.Cmd {

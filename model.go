@@ -20,6 +20,7 @@ type Board struct {
 }
 
 type clearMessage struct{}
+type taskMovedMessage struct{}
 
 func NewBoard() *Board {
 	help := help.New()
@@ -60,6 +61,11 @@ func (m *Board) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, m.cols[m.focused.getNext()].Set(APPEND, msg.Task)
 	case deleteTaskMessage:
 		m.statusMsg = "Task deleted successfully!"
+		return m, tea.Tick(2*time.Second, func(_ time.Time) tea.Msg {
+			return clearMessage{}
+		})
+	case taskMovedMessage:
+		m.statusMsg = "Task moved successfully!"
 		return m, tea.Tick(2*time.Second, func(_ time.Time) tea.Msg {
 			return clearMessage{}
 		})

@@ -70,7 +70,11 @@ func (c column) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				func() tea.Msg { return msg }, // Convert msg into a cmd
 			)
 		case key.Matches(msg, keys.Enter):
-			return c, c.MoveToNext()
+			msg, cmd := c.MoveToNext()
+			return c, tea.Batch(
+				cmd,
+				func() tea.Msg { return msg },
+			)
 		}
 	}
 	c.list, cmd = c.list.Update(msg)
@@ -128,12 +132,12 @@ type moveMsg struct {
 	Task
 }
 
-func (c *column) MoveToNext() tea.Cmd {
+func (c *column) MoveToNext() (tea.Msg, tea.Cmd) {
 	var task Task
 	var ok bool
 	// If nothing is selected, the SelectedItem will return Nil.
 	if task, ok = c.list.SelectedItem().(Task); !ok {
-		return nil
+		return nil, nil
 	}
 	// move item
 	c.list.RemoveItem(c.list.Index())
@@ -143,5 +147,5 @@ func (c *column) MoveToNext() tea.Cmd {
 	var cmd tea.Cmd
 	c.list, cmd = c.list.Update(nil)
 
-	return tea.Sequence(cmd, func() tea.Msg { return moveMsg{task} })
+	return taskMovedMessage{}, tea.Sequence(cmd, func() tea.Msg { return moveMsg{task} })
 }

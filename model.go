@@ -25,7 +25,16 @@ type taskMovedMessage struct{}
 func NewBoard() *Board {
 	help := help.New()
 	help.ShowAll = true
-	return &Board{help: help, focused: done}
+
+	board := &Board{
+		help:    help,
+		focused: todo,
+	}
+
+	board.initLists()
+	board.syncTaskSelection()
+
+	return board
 }
 
 func (m *Board) Init() tea.Cmd {
@@ -123,5 +132,22 @@ func (m *Board) moveFocus(direction int) {
 		m.focused = m.focused.getNext()
 	}
 
+	m.syncTaskSelection()
+
 	m.cols[m.focused].Focus()
+}
+
+func (m *Board) syncTaskSelection() {
+	// ensure only one column's tasks are selected
+	for i := range m.cols {
+		if i == int(m.focused) {
+			// if there are tasks in focused column, select the first one
+			if len(m.cols[i].list.Items()) > 0 {
+				m.cols[i].list.Select(0)
+			}
+		} else {
+			// unselect everything else
+			m.cols[i].list.Select(-1)
+		}
+	}
 }

@@ -42,8 +42,6 @@ func main() {
 	defer f.Close()
 
 	board = NewBoard()
-	board.focused = done
-	board.initLists()
 	p := tea.NewProgram(board)
 	if _, err := p.Run(); err != nil {
 		fmt.Println(err)

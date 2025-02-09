@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/charmbracelet/bubbles/help"
 	tea "github.com/charmbracelet/bubbletea"
 )
 
@@ -32,6 +33,24 @@ const (
 	inProgress
 	done
 )
+
+type clearMessage struct{}
+type taskMovedMessage struct{}
+
+func NewBoard() *Board {
+	help := help.New()
+	help.ShowAll = true
+
+	board := &Board{
+		help:    help,
+		focused: todo,
+	}
+
+	board.initLists()
+	board.syncTaskSelection()
+
+	return board
+}
 
 func main() {
 	f, err := tea.LogToFile("debug.log", "debug")

@@ -82,6 +82,7 @@ func (m *Board) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		switch {
 		case key.Matches(msg, keys.Quit):
 			m.quitting = true
+			m.saveTasks()
 			return m, tea.Quit
 		case key.Matches(msg, keys.Left):
 			m.moveFocus(-1)

@@ -67,3 +67,40 @@ func (b *Board) loadTasks() {
 	}
 }
 
+func (b *Board) saveTasks() {
+	// build struct
+	todoItems := b.cols[todo].list.Items()
+	inProgressItems := b.cols[inProgress].list.Items()
+	doneItems := b.cols[done].list.Items()
+
+	allItems := append(append(todoItems, inProgressItems...), doneItems...)
+
+	var tasksData TasksData
+
+	for _, item := range allItems {
+		// type assertion allows us to use task as a Task
+		if task, ok := item.(Task); ok {
+			tasksData.Tasks = append(tasksData.Tasks, TaskJSON{
+				Status:      task.status,
+				Title:       task.title,
+				Description: task.description,
+			})
+		}
+	}
+
+	// encode to json
+	jsonData, err := json.Marshal(tasksData)
+	if err != nil {
+		log.Fatal("Error encoding JSON:", err)
+		return
+	}
+
+	// overwrite json file
+	err = os.WriteFile("data.json", jsonData, 0644)
+	if err != nil {
+		log.Fatal("Error writing file:", err)
+		return
+	}
+
+	log.Println("saveTasks() was called")
+}

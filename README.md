@@ -25,3 +25,5 @@ Here are the features and improvements I’ve added (listed from oldest to newes
 - [feat(board): use color from DefaultTheme on status message](https://github.com/mustafa-ozturk/iMkancli/commit/72b1b26)
 - [test(task): add initial tests](https://github.com/mustafa-ozturk/iMkancli/commit/e28b719)
 - [test(board): add initials tests for board](https://github.com/mustafa-ozturk/iMkancli/commit/09f4718)
+- [feat(board): show task count in column titles](https://github.com/mustafa-ozturk/iMkancli/commit/69d9a0e)
+- [chore(script): add resetData.sh to restore default data.json](https://github.com/mustafa-ozturk/iMkancli/commit/9623572)

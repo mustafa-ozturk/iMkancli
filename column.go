@@ -31,7 +31,22 @@ func (c *column) Focused() bool {
 }
 
 func newColumn(status status) column {
-	defaultList := list.New([]list.Item{}, list.NewDefaultDelegate(), 0, 0)
+	defaultDelegate := list.NewDefaultDelegate()
+
+	defaultDelegate.Styles.SelectedTitle.
+		BorderForeground(DefaultTheme.SelectedBorderColor).
+		Foreground(DefaultTheme.SelectedTitleColor).
+		Bold(true)
+	defaultDelegate.Styles.SelectedDesc.
+		BorderForeground(DefaultTheme.SelectedBorderColor).
+		Foreground(DefaultTheme.SelectedDescColor)
+
+	defaultList := list.New([]list.Item{}, defaultDelegate, 0, 0)
+	defaultList.Styles.Title = lipgloss.NewStyle().
+		Foreground(DefaultTheme.ColumnTitleColor).
+		Background(DefaultTheme.ColumnTitleBgColor).
+		Padding(0, 1)
+
 	defaultList.SetShowHelp(false)
 	return column{focus: false, status: status, list: defaultList}
 }

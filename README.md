@@ -4,19 +4,18 @@ This is my improved version of the [Charmbracelet's Kanban CLI demo repository](
 
 My goal is to deepen my understanding of Charmbracelet tools by modifying and extending this project.
 
-### What's New
+## 📜 What's New
 
-Here are the features and improvements I’ve added:
+Here are the features and improvements I’ve added (listed from oldest to newest):
 
-
-- [feat(board): save tasks to JSON file before quitting](https://github.com/mustafa-ozturk/iMkancli/commit/09f7c89)
-- [fix(board): replace list.SetItems() with list.InsertItem() in loadTasks()](https://github.com/mustafa-ozturk/iMkancli/commit/152dd89)
-- [feat(board): load tasks from JSON file](https://github.com/mustafa-ozturk/iMkancli/commit/578f118)
-- [fix(column): delete task when pressing Enter in 'Done' column](https://github.com/mustafa-ozturk/iMkancli/commit/b5af3ce)
-- [refactor(column): remove unnecessary tea.Sequence in MoveToNext()](https://github.com/mustafa-ozturk/iMkancli/commit/14408d1)
-- [fix(board): ensure only the focused column has a selected task on startup](https://github.com/mustafa-ozturk/iMkancli/commit/4ea71e9)
-- [refactor(board): add moveFocus() to simplify column navigation](https://github.com/mustafa-ozturk/iMkancli/commit/74501fa)
-- [feat(board): add status message for task movement](https://github.com/mustafa-ozturk/iMkancli/commit/5e8f27b)
-- [feat(board): add status message for task deletion](https://github.com/mustafa-ozturk/iMkancli/commit/606017a)
-- [feat(board): add status message for task creation](https://github.com/mustafa-ozturk/iMkancli/commit/42adfad)
 - [fix(board): allow setting default selected column](https://github.com/mustafa-ozturk/iMkancli/commit/a5a52b0)
+- [feat(board): add status message for task creation](https://github.com/mustafa-ozturk/iMkancli/commit/42adfad)
+- [feat(board): add status message for task deletion](https://github.com/mustafa-ozturk/iMkancli/commit/606017a)
+- [feat(board): add status message for task movement](https://github.com/mustafa-ozturk/iMkancli/commit/5e8f27b)
+- [refactor(board): add moveFocus() to simplify column navigation](https://github.com/mustafa-ozturk/iMkancli/commit/74501fa)
+- [fix(board): ensure only the focused column has a selected task on startup](https://github.com/mustafa-ozturk/iMkancli/commit/4ea71e9)
+- [refactor(column): remove unnecessary tea.Sequence in MoveToNext()](https://github.com/mustafa-ozturk/iMkancli/commit/14408d1)
+- [fix(column): delete task when pressing Enter in 'Done' column](https://github.com/mustafa-ozturk/iMkancli/commit/b5af3ce)
+- [feat(board): load tasks from JSON file](https://github.com/mustafa-ozturk/iMkancli/commit/578f118)
+- [fix(board): replace list.SetItems() with list.InsertItem() in loadTasks()](https://github.com/mustafa-ozturk/iMkancli/commit/152dd89)
+- [feat(board): save tasks to JSON file before quitting](https://github.com/mustafa-ozturk/iMkancli/commit/09f7c89)

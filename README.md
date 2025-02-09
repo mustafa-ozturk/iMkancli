@@ -8,6 +8,9 @@ My goal is to deepen my understanding of Charmbracelet tools by modifying and ex
 
 Here are the features and improvements I’ve added:
 
+
+- [feat(board): save tasks to JSON file before quitting](https://github.com/mustafa-ozturk/iMkancli/commit/09f7c89)
+- [fix(board): replace list.SetItems() with list.InsertItem() in loadTasks()](https://github.com/mustafa-ozturk/iMkancli/commit/152dd89)
 - [feat(board): load tasks from JSON file](https://github.com/mustafa-ozturk/iMkancli/commit/578f118)
 - [fix(column): delete task when pressing Enter in 'Done' column](https://github.com/mustafa-ozturk/iMkancli/commit/b5af3ce)
 - [refactor(column): remove unnecessary tea.Sequence in MoveToNext()](https://github.com/mustafa-ozturk/iMkancli/commit/14408d1)

@@ -29,7 +29,7 @@ Here are the features and improvements I’ve added (listed from oldest to newes
 - [chore(script): add resetData.sh to restore default data.json](https://github.com/mustafa-ozturk/iMkancli/commit/9623572)
 
 
-### 📋TODO
+## 📋 TODO
 
 - Record a demo video/gif for README
 - Auto-save tasks on change
@@ -37,3 +37,26 @@ Here are the features and improvements I’ve added (listed from oldest to newes
 - Optional PIN protection (encrypt/decrypt data)
 - More themes
 - Better test coverage
+
+## 🤝 Contributing
+
+I'm currently developing **iMkancli** as a personal project to learn more about the Charmbracelet ecosystem.
+While I'm not looking for contributors right now, feel free to check out the code and experiment with it.
+
+### 🔧 Setup & Running
+
+1. Clone the repo
+```sh
+git clone https://github.com/mustafa-ozturk/iMkancli.git
+cd iMkancli
+```
+
+2. Run the app
+```sh
+go run main.go
+```
+
+3. Run tests
+```sh
+go test ./...
+```

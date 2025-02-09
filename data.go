@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 )
@@ -24,6 +25,7 @@ func (b *Board) initLists() {
 	b.cols[done].list.Title = "Done"
 
 	b.loadTasks()
+	b.updateColumnTitles()
 
 	// focus the correct column
 	for i := range b.cols {
@@ -32,6 +34,12 @@ func (b *Board) initLists() {
 			break
 		}
 	}
+}
+
+func (b *Board) updateColumnTitles() {
+	b.cols[todo].list.Title = fmt.Sprintf("To Do (%d)", len(b.cols[todo].list.Items()))
+	b.cols[inProgress].list.Title = fmt.Sprintf("To Do (%d)", len(b.cols[inProgress].list.Items()))
+	b.cols[done].list.Title = fmt.Sprintf("To Do (%d)", len(b.cols[done].list.Items()))
 }
 
 type TaskJSON struct {

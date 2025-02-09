@@ -38,6 +38,7 @@ func (b *Board) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		b.loaded = true
 		return b, tea.Batch(cmds...)
 	case Form:
+		b.updateColumnTitles()
 		b.statusMsg = "Task added successfully!"
 		b.clearMsgCmd = tea.Tick(2*time.Second, func(_ time.Time) tea.Msg {
 			return clearMessage{}
@@ -49,8 +50,10 @@ func (b *Board) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case clearMessage:
 		b.statusMsg = ""
 	case moveMsg:
+		b.updateColumnTitles()
 		return b, b.cols[b.focused.getNext()].Set(APPEND, msg.Task)
 	case deleteTaskMessage:
+		b.updateColumnTitles()
 		b.statusMsg = "Task deleted successfully!"
 		return b, tea.Tick(2*time.Second, func(_ time.Time) tea.Msg {
 			return clearMessage{}

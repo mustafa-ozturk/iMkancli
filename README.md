@@ -27,3 +27,13 @@ Here are the features and improvements I’ve added (listed from oldest to newes
 - [test(board): add initials tests for board](https://github.com/mustafa-ozturk/iMkancli/commit/09f4718)
 - [feat(board): show task count in column titles](https://github.com/mustafa-ozturk/iMkancli/commit/69d9a0e)
 - [chore(script): add resetData.sh to restore default data.json](https://github.com/mustafa-ozturk/iMkancli/commit/9623572)
+
+
+### 📋TODO
+
+- Record a demo video/gif for README
+- Auto-save tasks on change
+- Add basic settings (.config file)
+- Optional PIN protection (encrypt/decrypt data)
+- More themes
+- Better test coverage

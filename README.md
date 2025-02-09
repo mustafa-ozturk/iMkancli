@@ -23,3 +23,4 @@ Here are the features and improvements I’ve added (listed from oldest to newes
 - [feat(column): Add custom styling for list](https://github.com/mustafa-ozturk/iMkancli/commit/2fbc68d)
 - [feat(column): use color from DefaultTheme for foucsed column](https://github.com/mustafa-ozturk/iMkancli/commit/fd9fa1f)
 - [feat(board): use color from DefaultTheme on status message](https://github.com/mustafa-ozturk/iMkancli/commit/72b1b26)
+- [test(task): add initial tests](https://github.com/mustafa-ozturk/iMkancli/commit/e28b719)

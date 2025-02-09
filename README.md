@@ -19,3 +19,7 @@ Here are the features and improvements I’ve added (listed from oldest to newes
 - [feat(board): load tasks from JSON file](https://github.com/mustafa-ozturk/iMkancli/commit/578f118)
 - [fix(board): replace list.SetItems() with list.InsertItem() in loadTasks()](https://github.com/mustafa-ozturk/iMkancli/commit/152dd89)
 - [feat(board): save tasks to JSON file before quitting](https://github.com/mustafa-ozturk/iMkancli/commit/09f7c89)
+- [feat(theme): add default theme colors](https://github.com/mustafa-ozturk/iMkancli/commit/0d96d19)
+- [feat(column): Add custom styling for list](https://github.com/mustafa-ozturk/iMkancli/commit/2fbc68d)
+- [feat(column): use color from DefaultTheme for foucsed column](https://github.com/mustafa-ozturk/iMkancli/commit/fd9fa1f)
+- [feat(board): use color from DefaultTheme on status message](https://github.com/mustafa-ozturk/iMkancli/commit/72b1b26)

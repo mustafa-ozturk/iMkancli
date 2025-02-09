@@ -110,7 +110,7 @@ func (m *Board) View() string {
 	}
 
 	statusUI := lipgloss.NewStyle().
-		Foreground(lipgloss.Color("#00FF00")). // green color
+		Foreground(lipgloss.Color(DefaultTheme.StatusTextColor)).
 		Render(m.statusMsg)
 
 	// calling View() on all the columns

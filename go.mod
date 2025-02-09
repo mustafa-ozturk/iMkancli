@@ -1,4 +1,4 @@
-module github.com/charmbracelet/kancli
+module github.com/mustafa-ozturk/iMkancli
 
 go 1.19
 

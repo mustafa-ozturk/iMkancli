@@ -139,6 +139,13 @@ func (c *column) MoveToNext() (tea.Msg, tea.Cmd) {
 	if task, ok = c.list.SelectedItem().(Task); !ok {
 		return nil, nil
 	}
+
+	// remove item if done
+	if c.status == done {
+		c.list.RemoveItem(c.list.Index())
+		return deleteTaskMessage{}, nil
+	}
+
 	// move item
 	c.list.RemoveItem(c.list.Index())
 	task.status = c.status.getNext()

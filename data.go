@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"log"
 	"os"
-
-	"github.com/charmbracelet/bubbles/list"
 )
 
 // Provides the mock data to fill the kanban board
@@ -58,9 +56,14 @@ func (b *Board) loadTasks() {
 		log.Fatalf("Error: Failed to parse JSON from 'data.json': %v", err)
 	}
 
+	// TODO: Investigate why InsertItem() works while SetItems() caused task loss.
+	// Using InsertItem() ensures tasks persist across app restarts.
 	for _, task := range tasksData.Tasks {
-		b.cols[task.Status].list.SetItems([]list.Item{
-			Task{status: task.Status, title: task.Title, description: task.Description},
+		b.cols[task.Status].list.InsertItem(len(b.cols[task.Status].list.Items()), Task{
+			status:      task.Status,
+			title:       task.Title,
+			description: task.Description,
 		})
 	}
 }
+
